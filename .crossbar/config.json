@@ -47,39 +47,14 @@
          ]
       },
       {
-         "type": "container",
+         "type": "guest",
+	 "executable": "python3",
+	 "arguments": ["main.py"],
          "options": {
-            "pythonpath": ["../"]
-         },
-         "components": [
-            {
-               "type": "class",
-               "classname": "comm.highway.In",
-               "realm": "realm1",
-               "transport": {
-                  "type": "websocket",
-                  "endpoint": {
-                     "type": "tcp",
-                     "host": "127.0.0.1",
-                     "port": 8080
-                  },
-                  "url": "ws://127.0.0.1:8080/ws"
-               }
-            },
-            {
-               "type": "class",
-               "classname": "comm.highway.Out",
-               "realm": "realm1",
-               "transport": {
-                  "type": "websocket",
-                  "endpoint": {
-                     "type": "tcp",
-                     "host": "127.0.0.1",
-                     "port": 8080
-                  },
-                  "url": "ws://127.0.0.1:8080/ws"
-            }
-         ]
+            "workdir": "../",
+	    "stdout": "log",
+	    "stderr": "log"
+         }
       }
    ]
 }
