@@ -1,3 +1,5 @@
 *.pid
 *.pyc
 __pycache__
+
+.directory
