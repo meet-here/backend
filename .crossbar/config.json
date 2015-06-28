@@ -17,8 +17,8 @@
                      "permissions": [
                         {
                            "uri": "*",
-                           "publish": false,
-                           "subscribe": false,
+                           "publish": true,
+                           "subscribe": true,
                            "call": true,
                            "register": true
                         }

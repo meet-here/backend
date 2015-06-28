@@ -1,9 +1,9 @@
 import time
 
-import comm.highway as highway
+import comm.RoomApplication as RoomApplication
 
 def main():
-    highway.register_modules()
+    RoomApplication.register_modules()
 
     while True:
         time.sleep(10)
