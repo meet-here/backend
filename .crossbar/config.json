@@ -55,6 +55,16 @@
 	    "stdout": "log",
 	    "stderr": "log"
          }
+      },
+	   {
+         "type": "guest",
+	 "executable": "sass",
+	 "arguments": ["--watch","sass:css"],
+         "options": {
+            "workdir": "../../frontend",
+	    "stdout": "log",
+	    "stderr": "log"
+         }
       }
    ]
 }
