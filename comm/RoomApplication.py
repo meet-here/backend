@@ -16,17 +16,17 @@ class RoomApplication(ApplicationSession):
         self.rooms=[]
     
     @wamp.register('rooms.get_new_room')
-    def get_new_room(self):
+    def get_new_room(self, name):
         roomId = self.room_counter
         self.room_counter += 1
         room = {
             'id': roomId,
-            'name': "Sample Name",
-            'num_users': 0,
+            'name': name,
+            'num_users': 1,
         }
         self.rooms.append(room)
         logger.debug("new room created: %s", roomId)
-        return self.room_counter
+        return json.dumps(room)
 
     @wamp.register('rooms.get_all_rooms')
     def get_all_rooms(self):
