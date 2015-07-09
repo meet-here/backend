@@ -1,6 +1,6 @@
 
 import logging
-
+import json
 import asyncio
 
 from autobahn import wamp
@@ -12,16 +12,25 @@ logger = logging.getLogger(__name__)
 class RoomApplication(ApplicationSession):
     def __init__(self, config = None):
         ApplicationSession.__init__(self, config)
-        self.room_counter=0;
-        self.rooms={}
+        self.room_counter=0
+        self.rooms=[]
     
     @wamp.register('rooms.get_new_room')
     def get_new_room(self):
-        roomId = self.room_counter;
-        self.room_counter+=1;
-        self.rooms[roomId]=True;
+        roomId = self.room_counter
+        self.room_counter += 1
+        room = {
+            'id': roomId,
+            'name': "Sample Name",
+            'num_users': 0,
+        }
+        self.rooms.append(room)
         logger.debug("new room created: %s", roomId)
         return self.room_counter
+
+    @wamp.register('rooms.get_all_rooms')
+    def get_all_rooms(self):
+        return json.dumps(self.rooms)
 
     @asyncio.coroutine
     def onJoin(self, details):
